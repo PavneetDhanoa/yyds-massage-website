@@ -1,0 +1,78 @@
+/* YYDS Massage – Relaxing spa gradients (inspired by leelaecospa) */
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-soft: #f5f7f4;
+  --text: #1f3a35;
+  --subtext: #6a7a70;
+  --accent: #9ec074;
+  --accent-2: #e1c391;
+  --border: rgba(255,255,255,0.16);
+  --shadow: 0 18px 46px rgba(0,0,0,0.28);
+  --radius: 16px;
+  --transition: 0.35s ease;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  color: #1f3a35;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f8f5 55%, #e8ece5 100%);
+  scroll-behavior: smooth;
+}
+img { max-width: 100%; display: block; border-radius: 12px; }
+.container { width: min(1100px, 92vw); margin: 0 auto; }
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(14px);
+  background: rgba(255,255,255,0.85);
+  border-bottom: 1px solid rgba(156,192,116,0.35);
+}
+.navbar { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
+.navbar .brand { font-weight: 900; color: var(--accent); letter-spacing: 0.12em; font-size: 1.32rem; }
+.nav-links { display: flex; gap: 1.2rem; }
+.nav-links a { color: var(--text); text-decoration: none; font-weight: 600; padding: .45rem .8rem; border-radius: 12px; transition: var(--transition); }
+.nav-links a:hover { color: #021310; background: linear-gradient(120deg, rgba(158,192,116,0.95), rgba(225,195,145,0.95)); }
+.menu-toggle { display: none; border: 0; background: none; color: var(--text); font-size: 1.5rem; }
+.hero { min-height: 84vh; display: grid; place-items: center; text-align: center; padding: 3rem 0 3.5rem; }
+.hero-content { background: linear-gradient(135deg, rgba(158,192,116,0.2), rgba(255,255,255,0.9)); border: 1px solid rgba(157,192,116,0.4); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2.4rem; max-width: 780px; animation: fadeUp .9s ease both; }
+.hero h1 { margin: 0; font-size: clamp(2.1rem, 5vw, 3.9rem); color: #214734; letter-spacing: 0.01em; }
+.hero p { margin: 1rem 0 1.3rem; color: var(--subtext); font-size: 1.1rem; }
+
+.btn { display: inline-block; background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #020b1a; text-decoration: none; padding: 0.78rem 1.4rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.18); transition: var(--transition); font-weight: 700; box-shadow: 0 8px 18px rgba(41,169,255,0.3); }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(255,215,0,0.3); }
+.section { padding: 3.2rem 0; }
+.section h2 { margin: 0 0 1rem; font-size: clamp(1.5rem, 4vw, 2.55rem); color: #214734; }
+.section p { color: var(--subtext); }
+.features, .reviews, .service-list { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); }
+.card, .review, .service-item, .form { background: linear-gradient(160deg, var(--surface-soft), var(--surface)); border-radius: var(--radius); border: 1px solid rgba(160,188,145,0.3); box-shadow: var(--shadow); padding: 1.2rem; transition: var(--transition); }
+.card:hover, .review:hover, .service-item:hover, .form:hover { transform: translateY(-2px); border-color: rgba(158,192,116,0.55); }
+.card h3, .service-item h3, .review strong { margin: 0 0 .6rem; color: var(--accent); }
+.card p, .service-item p, .review p, .form p, .section p { color: var(--subtext); }
+.review p { margin: 0 0 .8rem; }
+.service-item ul { padding-left: 1.2rem; margin: .5rem 0; color: var(--subtext); }
+.grid-two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+.form { background: linear-gradient(140deg, #ffffff, #f5f7f4); }
+.form label { display: block; margin-top: .75rem; font-weight: 500; color: #1f3a35; }
+.form input, .form select, .form textarea { width: 100%; margin-top: 0.35rem; border: 1px solid rgba(145,174,132,0.4); border-radius: 12px; padding: 0.75rem; background: #ffffff; color: #1f3a35; }
+.form input:focus, .form select:focus, .form textarea:focus { outline: 2px solid rgba(158,192,116,0.45); border-color: rgba(158,192,116,0.8); }
+.form button { margin-top: 1rem; }
+.footer { background: #f3f5ef; color: #5f6f63; font-size: 0.94rem; padding: 1.6rem 0; border-top: 1px solid rgba(158,192,116,0.3); }
+.footer .container { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .7rem; }
+.footer p { margin:0; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px);} to { opacity: 1; transform: translateY(0);} }
+.fade-in { opacity:0; transform: translateY(20px); animation: fadeUp .9s ease forwards; }
+.fade-in.delay-1 { animation-delay:.2s; }
+.fade-in.delay-2 { animation-delay:.35s; }
+.fade-in.delay-3 { animation-delay:.5s; }
+@media (max-width: 940px) { .grid-two { grid-template-columns: 1fr; } }
+@media (max-width: 768px) {
+  .nav-links { position: fixed; top: 64px; right: 0; background: rgba(255,255,255,0.95); width: 220px; height: calc(100vh - 64px); transform: translateX(100%); transition: transform .28s ease; flex-direction: column; padding: .8rem; gap: .4rem; }
+  .nav-links.active { transform: translateX(0); }
+  .menu-toggle { display: block; }
+  .nav-links a { padding: .9rem 1rem; font-size: 1rem; }
+}
+

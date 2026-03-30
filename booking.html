@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking | YYDS Massage Calgary</title>
+  <meta name="description" content="Booking information for YYDS Massage: book online or call for appointments in Calgary.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="brand">YYDS Massage</a>
+      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="booking.html">Booking</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h2>Online Booking</h2>
+        <p>Book directly online and we’ll confirm your appointment by phone. For immediate assistance, call <a href="tel:+14037270480">(403) 727-0480</a>.</p>
+
+        <div class="grid-two" style="align-items:start; gap: 1.5rem;">
+          <div class="form fade-in">
+            <h3>Booking Form</h3>
+            <div id="bookingMessage" style="margin-bottom:1rem; color:#2a6a44;"></div>
+            <form id="bookingForm">
+              <label>Name <input id="nameInput" type="text" placeholder="Your name" required></label>
+              <label>Phone <input id="phoneInput" type="tel" placeholder="(403) 123-4567" required></label>
+              <label>Service
+                <select id="serviceInput" required>
+                  <option value="">Select service</option>
+                  <option>Full Body Massage</option>
+                  <option>Relaxation Massage</option>
+                  <option>Deep Tissue Massage</option>
+                  <option>Stress Relief Massage</option>
+                </select>
+              </label>
+              <label>Date <input id="dateInput" type="date" required></label>
+              <label>Time
+                <select id="timeInput" required>
+                  <option value="">Select time</option>
+                  <option>10:00</option>
+                  <option>11:30</option>
+                  <option>13:00</option>
+                  <option>14:30</option>
+                  <option>16:00</option>
+                  <option>18:00</option>
+                  <option>20:00</option>
+                </select>
+              </label>
+              <label>Notes <textarea id="notesInput" rows="3" placeholder="Any special requests"></textarea></label>
+              <button type="submit" class="btn">Confirm booking</button>
+            </form>
+          </div>
+
+          <div class="form fade-in delay-1">
+            <h3>Available Time Slots</h3>
+            <div style="background:#f8f5ee; border:1px solid #ddd; border-radius: 12px; padding: 1rem;">
+              <ul id="slotList" style="padding-left:1rem; color:#6f6f6f;"></ul>
+            </div>
+
+            <h3 style="margin-top:1.3rem;">Your Upcoming Bookings</h3>
+            <div style="background:#f8f5ee; border:1px solid #ddd; border-radius: 12px; padding: 1rem;">
+              <ul id="bookingsList" style="padding-left:1rem; color:#6f6f6f;"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>3820 Bow Trail SW, Calgary, AB T3C 2E7 | <a href="tel:+14037270480">(403) 727-0480</a></p>
+      <p>© 2026 YYDS Massage. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
