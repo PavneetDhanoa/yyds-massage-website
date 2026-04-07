@@ -91,7 +91,7 @@ function initBooking() {
   renderAvailableSlots();
   renderBookings();
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = document.getElementById('nameInput').value.trim();
     const phone = document.getElementById('phoneInput').value.trim();
@@ -117,15 +117,35 @@ function initBooking() {
     }
 
     const newBooking = { name, phone, service, date, time, notes, createdAt: new Date().toISOString() };
-    bookings.push(newBooking);
-    saveBookings();
 
-    form.reset();
-    dateInput.value = '';
-    renderAvailableSlots();
-    renderBookings();
+    try {
+      // Send booking data to n8n webhook
+      const response = await fetch('https://duskcreative.app.n8n.cloud/webhook/e20dcc24-de09-4b3d-be40-799a3edf15c5', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newBooking),
+      });
 
-    showMessage(`Your appointment request for ${formatDate(date)} at ${time} is confirmed. We will call you at ${phone}.`, 'success');
+      if (!response.ok) {
+        throw new Error('Failed to submit booking');
+      }
+
+      // If webhook succeeds, save locally and show success
+      bookings.push(newBooking);
+      saveBookings();
+
+      form.reset();
+      dateInput.value = '';
+      renderAvailableSlots();
+      renderBookings();
+
+      showMessage(`Your appointment request for ${formatDate(date)} at ${time} is confirmed. We will call you at ${phone}.`, 'success');
+    } catch (error) {
+      console.error('Booking submission error:', error);
+      showMessage('There was an error submitting your booking. Please try again or call us directly.', 'error');
+    }
   });
 }
 
